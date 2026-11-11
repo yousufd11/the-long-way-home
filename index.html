@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="A little drive through the current weather in Mosul and Toronto.">
+  <title>The long way home</title>
+  <link rel="stylesheet" href="style.css">
+  <script src="script.js" defer></script>
+</head>
+<body>
+  <main>
+    <header><a href="#" class="name">Yousuf Dhannoon</a><span>DATA AS EXPERIENCE / 2026</span></header>
+    <div class="intro"><div><p class="eyebrow">NO RUSH TONIGHT</p><h1>The long<br>way home.</h1></div><p class="opening">Dinner’s over. Nobody’s ready<br>to go home yet.<br><span>Pick a city. Stay a little longer.</span></p></div>
+    <div class="city-bar"><div class="cities" aria-label="Choose a city"><button class="city active" data-city="mosul" aria-pressed="true">Mosul <span>الموصل</span></button><button class="city" data-city="toronto" aria-pressed="false">Toronto</button></div><p id="local-time">Looking outside…</p></div>
+    <section id="view" class="parked loading" role="img" aria-label="An illustrated view through a car window. Loading weather.">
+      <div class="sky"><div class="orb"></div><div class="clouds"></div></div>
+      <div class="cityscape far"></div><div class="cityscape near"></div>
+      <div class="road"><div class="road-lines"></div></div>
+      <div class="wind-lines"><i></i><i></i><i></i></div>
+      <div id="rain"></div><div class="glass-shine"></div><div class="window-edge"></div>
+      <div class="scene-caption"><span id="place-label">MOSUL, IRAQ</span><span id="scene-state">Waiting for live weather</span></div>
+      <div class="mirror"><span>take your time</span></div>
+    </section>
+    <div class="drive-controls"><button id="drive" class="primary" aria-pressed="false">Take the long way</button><button id="wipers" aria-pressed="false">Wipers off</button><button id="refresh">Check the weather</button><span id="drive-note">Parked for a minute.</span></div>
+    <section class="weather" aria-live="polite" aria-busy="true" id="weather"><div><p class="eyebrow">OUT THE WINDOW</p><h2 id="mood">Let’s see what it’s like.</h2><p id="description">Getting the current weather in Mosul.</p></div><dl><div><dt>Feels like</dt><dd id="temperature">—</dd></div><div><dt>Wind</dt><dd id="wind">—</dd></div><div><dt>Clouds</dt><dd id="cloud">—</dd></div></dl></section>
+    <div class="data-row"><p id="status" role="status">Connecting to Open-Meteo…</p><details><summary>What’s changing the view?</summary><p>Daylight sets the sky and streetlights. Temperature warms or cools the colours. Clouds soften the light. Wind moves the streaks across the glass. Rain or snow adds marks to the window.</p><p>Driving moves the scenery. Wipers fade the marks while you watch.</p><p id="precipitation">Precipitation: waiting for data.</p><details><summary>See the JSON</summary><pre id="json">Waiting for the API response.</pre></details></details></div>
+    <footer><p>A small drive between two places.<br>The scene is an impression, not a street map.</p><p>Weather data: <a href="https://open-meteo.com/" target="_blank" rel="noreferrer">Open-Meteo</a><br>Current model estimates. Checks every 5 minutes.</p></footer>
+  </main>
+</body>
+</html>

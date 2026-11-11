@@ -1,0 +1,68 @@
+* { box-sizing: border-box; }
+:root { color-scheme: light; }
+body { margin: 0; background: #f1eee6; color: #302e29; font-family: Arial, sans-serif; }
+main { max-width: 1100px; padding: 30px 38px; margin: auto; }
+header { display: flex; justify-content: space-between; align-items: center; gap: 16px; font-size: 10px; letter-spacing: 1.2px; border-bottom: 1px solid #c9c3b6; padding-bottom: 20px; }
+.name { font-size: 13px; letter-spacing: 0; text-decoration: none; }
+a { color: inherit; }
+.intro { display: flex; justify-content: space-between; gap: 35px; align-items: flex-end; padding: 34px 0; }
+.eyebrow { font-size: 10px; letter-spacing: 2px; margin: 0 0 13px; }
+h1 { font: normal clamp(55px, 7.8vw, 90px)/.97 Georgia, serif; letter-spacing: -3px; margin: 0; }
+.opening { font-size: 15px; line-height: 1.6; margin: 0 0 5px; }
+.opening span { display: inline-block; margin-top: 15px; color: #777064; }
+.city-bar { display: flex; align-items: center; justify-content: space-between; gap: 15px; margin: 5px 0 15px; }
+.cities { display: flex; gap: 7px; }
+button { background: transparent; border: 1px solid #b6afa1; color: inherit; font: inherit; font-size: 12px; padding: 11px 16px; border-radius: 2px; cursor: pointer; }
+button:hover { background: #e4ded1; }
+button.active, .primary { background: #373f36; border-color: #373f36; color: #f6f2e8; }
+.primary:hover { background: #4c584a; }
+.city span { margin-left: 9px; font-size: 13px; }
+#local-time { font-size: 12px; color: #666052; text-align: right; }
+:focus-visible { outline: 3px solid #a36036; outline-offset: 4px; }
+button:disabled { opacity: .5; cursor: wait; }
+#view { --sky-top: #71818d; --sky-bottom: #b5b9b4; --cloud: .3; --wind-speed: 7s; --wind-angle: 0deg; --rain-opacity: 0; --lamp: #ffde91; height: 390px; position: relative; isolation: isolate; overflow: hidden; border-radius: 90px 16px 55px 16px; background: #252b30; }
+.sky { position: absolute; inset: 0; background: linear-gradient(var(--sky-top),var(--sky-bottom)); transition: background 1.5s; }
+.orb { position: absolute; top: 35px; left: 72%; width: 48px; height: 48px; border-radius: 50%; background: #f9e1a8; box-shadow: 0 0 75px #ffe5a855; }
+.night .orb { width: 30px; height: 30px; background: #ececde; box-shadow: 8px -4px 0 var(--sky-top) inset; }
+.clouds { position: absolute; inset: 0; opacity: var(--cloud); background: linear-gradient(170deg, #b9c0c6, #939fa9 45%, transparent 90%); }
+.cityscape { position: absolute; width: 200%; bottom: 112px; background-repeat: repeat-x; animation: pass 28s linear infinite; }
+.far { height: 115px; opacity: .55; background: repeating-linear-gradient(90deg, #4b5459 0 40px, transparent 40px 53px, #4b5459 53px 95px, transparent 95px 115px); clip-path: polygon(0 35%,5% 35%,5% 0,10% 0,10% 40%,20% 40%,20% 15%,25% 15%,25% 55%,35% 55%,35% 5%,45% 5%,45% 35%,55% 35%,55% 0,60% 0,60% 40%,70% 40%,70% 15%,75% 15%,75% 55%,85% 55%,85% 5%,95% 5%,95% 35%,100% 35%,100% 100%,0 100%); animation-duration: 50s; }
+.near { height: 100px; background: repeating-linear-gradient(90deg, transparent 0 42px, #373f40 42px 47px, transparent 47px 125px), repeating-linear-gradient(90deg, transparent 0 32px, var(--lamp) 32px 57px, transparent 57px 125px); background-size: 125px 100%, 125px 5px; background-repeat: repeat-x; background-position: bottom, top; }
+#view.day { --lamp: #858c85; }
+.road { position: absolute; bottom: 0; height: 112px; width: 100%; background: linear-gradient(#505351,#303635); border-top: 4px solid #a7a492; }
+.road-lines { position: absolute; width: 200%; top: 40px; height: 4px; background: repeating-linear-gradient(90deg, #d9c38b 0 70px, transparent 70px 150px); animation: pass 5s linear infinite; }
+.wind-lines { position: absolute; inset: 0; transform: rotate(var(--wind-angle)); }
+.wind-lines i { position: absolute; left: -30%; top: 30%; width: 110px; height: 1px; background: #f3f4ef66; animation: wind var(--wind-speed) linear infinite; }
+.wind-lines i:nth-child(2) { top: 43%; animation-delay: -2s; width: 60px; }
+.wind-lines i:nth-child(3) { top: 15%; animation-delay: -4s; width: 85px; }
+#rain { position: absolute; inset: -35px; background: repeating-linear-gradient(107deg, transparent 0 34px, #e1eaf066 35px 36px, transparent 37px 73px); opacity: var(--rain-opacity); animation: rain .8s linear infinite; }
+.snow #rain { background: radial-gradient(circle, #f3f3ee 1px, transparent 3px); background-size: 35px 40px; animation-duration: 4s; }
+.wiping #rain { animation: rain .8s linear infinite, wipe 2.5s ease-in-out infinite; }
+.glass-shine { position: absolute; inset: 0; background: linear-gradient(120deg,transparent 40%,#ffffff0c 40%,#ffffff0c 54%,transparent 54%); pointer-events: none; }
+.window-edge { position: absolute; inset: 0; border: 13px solid #252b2b; border-bottom-width: 32px; border-radius: inherit; box-shadow: inset 0 0 30px #17202466; pointer-events: none; }
+.scene-caption { position: absolute; top: 23px; left: 45px; right: 30px; display: flex; justify-content: space-between; color: #fff; text-shadow: 0 1px 5px #000; font-size: 9px; letter-spacing: 1.5px; }
+.mirror { position: absolute; width: 133px; height: 62px; right: 12px; bottom: 32px; background: linear-gradient(150deg,#7c8482,#333d40); border: 7px solid #242a2a; border-radius: 35px 10px 25px 18px; transform: rotate(-4deg); }
+.mirror span { position: absolute; bottom: 8px; width: 100%; text-align: center; color: #d1d4ce; font-size: 9px; }
+.parked .cityscape, .parked .road-lines { animation-play-state: paused; }
+.loading { opacity: .65; }
+.drive-controls { display: flex; gap: 9px; flex-wrap: wrap; align-items: center; margin-top: 16px; }
+#drive-note { font-size: 11px; color: #777064; margin-left: auto; }
+.weather { display: flex; justify-content: space-between; gap: 30px; margin-top: 35px; padding-bottom: 25px; border-bottom: 1px solid #c9c3b6; }
+h2 { font: normal 29px/1.15 Georgia,serif; letter-spacing: -.5px; margin: 0 0 9px; }
+#description { font-size: 13px; line-height: 1.5; margin: 0; color: #6c6558; }
+dl { display: flex; gap: 29px; margin: 4px 0 0; white-space: nowrap; }
+dt { font-size: 10px; color: #726b5e; margin-bottom: 10px; }
+dd { margin: 0; font-size: 21px; }
+.data-row { font-size: 11px; line-height: 1.7; color: #6c6558; }
+summary { cursor: pointer; text-decoration: underline; text-underline-offset: 3px; }
+details p { max-width: 650px; }
+pre { white-space: pre-wrap; overflow-wrap: anywhere; background: #e6e0d4; padding: 15px; max-width: 650px; }
+footer { display: flex; justify-content: space-between; gap: 20px; margin-top: 32px; font-size: 10px; color: #787062; line-height: 1.7; }
+footer p { margin: 0; }
+@keyframes pass { to { transform: translateX(-50%); } }
+@keyframes wind { to { left: 110%; } }
+@keyframes rain { to { transform: translate(-6px,30px); } }
+@keyframes wipe { 0%,100% { opacity: var(--rain-opacity); } 35%,60% { opacity: .03; } }
+@media (max-width: 700px) { main { padding: 23px 20px; } .intro { align-items: flex-start; } .opening { font-size: 12px; padding-top: 22px; } #view { height: 330px; } .weather { flex-direction: column; gap: 20px; } #drive-note { width: 100%; margin-top: 3px; } dl { justify-content: space-between; } }
+@media (max-width: 450px) { header { font-size: 8px; } .name { font-size: 11px; } .intro { flex-direction: column; gap: 18px; padding: 27px 0; } h1 { font-size: 65px; } .opening { padding: 0; } .opening br { display: none; } .opening span { display: block; margin-top: 3px; } .city-bar { flex-wrap: wrap; gap: 0; } #local-time { font-size: 10px; } #view { height: 290px; border-radius: 55px 12px 35px 12px; } .scene-caption { left: 30px; font-size: 8px; letter-spacing: .5px; } .drive-controls button { padding: 10px; font-size: 11px; } footer { flex-direction: column; gap: 12px; } }
+@media (prefers-reduced-motion: reduce) { *,*::before,*::after { animation: none !important; transition: none !important; } }
